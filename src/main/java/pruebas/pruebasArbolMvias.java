@@ -7,7 +7,7 @@ package pruebas;
 
 import Arboles.ArbolMViasBusqueda;
 import excepciones.ExcepcionClaveNoExiste;
-import excepciones.ExepcionOrdenInvalido;
+import excepciones.ExcepcionOrdenInvalido;
 
         
 /**
@@ -19,7 +19,7 @@ public class pruebasArbolMvias {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ExepcionOrdenInvalido, ExcepcionClaveNoExiste {
+    public static void main(String[] args) throws ExcepcionOrdenInvalido, ExcepcionClaveNoExiste {
         ArbolMViasBusqueda<Integer,Integer > arbolMvias;
         arbolMvias = new ArbolMViasBusqueda<>(4);
         arbolMvias.insertar(80, 10);  arbolMvias.insertar(120, 10);  arbolMvias.insertar(200, 10);

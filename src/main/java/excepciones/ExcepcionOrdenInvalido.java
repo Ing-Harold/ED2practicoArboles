@@ -9,13 +9,13 @@ package excepciones;
  *
  * @author HAROLD
  */
-public class ExepcionOrdenInvalido extends Exception {
+public class ExcepcionOrdenInvalido extends Exception {
 
     /**
      * Creates a new instance of <code>ExepcionOrdenInvalido</code> without
      * detail message.
      */
-    public ExepcionOrdenInvalido() {
+    public ExcepcionOrdenInvalido() {
         super("Clave no existe en el arbol");
     }
 
@@ -25,7 +25,7 @@ public class ExepcionOrdenInvalido extends Exception {
      *
      * @param msg the detail message.
      */
-    public ExepcionOrdenInvalido(String msg) {
+    public ExcepcionOrdenInvalido(String msg) {
         super(msg);
     }
 }

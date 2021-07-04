@@ -6,7 +6,7 @@
 package Arboles;
 
 import excepciones.ExcepcionClaveNoExiste;
-import excepciones.ExepcionOrdenInvalido;
+import excepciones.ExcepcionOrdenInvalido;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,9 +26,9 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
         this.orden = 3;
     }
     
-    public ArbolMViasBusqueda(int orden) throws ExepcionOrdenInvalido{
+    public ArbolMViasBusqueda(int orden) throws ExcepcionOrdenInvalido{
         if (orden < 3)
-            throw new ExepcionOrdenInvalido();
+            throw new ExcepcionOrdenInvalido();
         this.orden = orden;
     }
     

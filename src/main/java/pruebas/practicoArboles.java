@@ -8,7 +8,7 @@ package pruebas;
 import Arboles.ArbolBinarioBusqueda;
 import Arboles.ArbolMViasBusqueda;
 import Arboles.IArbolBusqueda;
-import excepciones.ExepcionOrdenInvalido;
+import excepciones.ExcepcionOrdenInvalido;
 
 /**
  *
@@ -28,7 +28,7 @@ public class practicoArboles {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ExepcionOrdenInvalido {
+    public static void main(String[] args) throws ExcepcionOrdenInvalido {
         ArbolBinarioBusqueda<Integer,Integer> arbolBinario = new ArbolBinarioBusqueda<>();
         arbolBinario.insertar(40, 21);
         arbolBinario.insertar(30, 21);arbolBinario.insertar(70, 21);
