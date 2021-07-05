@@ -211,7 +211,7 @@ public class ArbolBinarioBusqueda <K extends Comparable<K>, V>
     
     @Override
     public int nivel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.altura()-1;
     }
 
     @Override
@@ -436,7 +436,7 @@ public class ArbolBinarioBusqueda <K extends Comparable<K>, V>
         cadena.append(prefijo);
         
         if (prefijo.length() == 0) {
-            cadena.append(ponerCodo ? "────(RAIZ) " : "  ├────(R)"); //arbol vacio o no
+            cadena.append(ponerCodo ? "───RAIZ- " : "  ├───(R)"); //arbol vacio o no
         } else {
             cadena.append(ponerCodo ? "  └────(der)" : "  ├────(izq)");  //derecha o izquierda
         }
