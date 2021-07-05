@@ -61,6 +61,8 @@ public class practicoArboles {
         arbolB.insertar(90, 10); arbolB.insertar(91, 10); arbolB.insertar(70, 10);
         arbolB.insertar(75, 10); arbolB.insertar(99, 10); 
 
+        System.out.println("HAROLD ROMERO ALBARADO    PRACTICO DE ARBOLES");
+        //TODOS LOS EJEMPLOS SON DE LOS ARBOLES QUE ESTABAN EN EL AVANZE DE LA MATERIA
         System.out.println("1. Implementar los métodos que no se implementaron en clases o que se implementaron a \n" +
 "medias de árboles m vias de búsqueda y arboles B");
         // ARBOL BINARIO
