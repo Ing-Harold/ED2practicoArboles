@@ -74,7 +74,7 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
         }
     }
     //metodo por implementar
-    private int obtenerPosicionClaveEnNodo (NodoMVias<K,V> nodoActual, K claveABuscar){
+    protected int obtenerPosicionClaveEnNodo (NodoMVias<K,V> nodoActual, K claveABuscar){
         for (int i = 0; i < nodoActual.cantidadDeClavesNoVacios(); i++){
             K claveActual = nodoActual.getClave(i);
             if (claveABuscar.compareTo(claveActual) == 0){
@@ -84,7 +84,7 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
         return -1;
     }
     //metodo por implementar
-    private int obtenerPosicionPorDondeBajar (NodoMVias<K,V> nodoActual, K claveAInsertar){
+    protected int obtenerPosicionPorDondeBajar (NodoMVias<K,V> nodoActual, K claveAInsertar){
         for (int i = 0; i < nodoActual.cantidadDeClavesNoVacios(); i++){
             K claveActual = nodoActual.getClave(i);
             if (claveAInsertar.compareTo(claveActual) < 0){
@@ -94,11 +94,13 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
         return nodoActual.cantidadDeClavesNoVacios();
     }
     //metodo por implementar
-    private void insertarClaveYValorOrdenadoEnNodo(NodoMVias<K,V> nodoActual, K claveAInsertar, V valorAInsertar){
+    protected void insertarClaveYValorOrdenadoEnNodo(NodoMVias<K,V> nodoActual, K claveAInsertar, V valorAInsertar){
         int posicionAInsertar = this.obtenerPosicionPorDondeBajar(nodoActual, claveAInsertar);
         for (int i = nodoActual.cantidadDeClavesNoVacios(); i > posicionAInsertar; i--){
             nodoActual.setClave(i, nodoActual.getClave(i-1));
             nodoActual.setValor(i, nodoActual.getValor(i-1));
+            //a probar
+            nodoActual.setHijo(i + 1 , nodoActual.getHijo(i));
         }
         nodoActual.setClave(posicionAInsertar, claveAInsertar);
         nodoActual.setValor(posicionAInsertar, valorAInsertar);
@@ -149,7 +151,7 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
         nodoActual.setHijo(nodoActual.cantidadDeClavesNoVacios(), supuestoNuevoHijo);
         return nodoActual;
     }
-    private void eliminarClaveYValorDelNodo(NodoMVias<K,V> nodoActual,int posicionAEliminar){
+    protected void eliminarClaveYValorDelNodo(NodoMVias<K,V> nodoActual,int posicionAEliminar){
         for (int i = posicionAEliminar; i < nodoActual.cantidadDeClavesNoVacios()-1; i++){
             nodoActual.setClave(i, nodoActual.getClave(i+1));
             nodoActual.setValor(i, nodoActual.getValor(i+1));

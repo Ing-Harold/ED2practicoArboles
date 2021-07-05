@@ -36,7 +36,6 @@ public class pruebasArbolBinario {
         System.out.println(arbolEst.sixe());
         System.out.println(arbolEst.eliminar("Romero Harold"));
         System.out.println("Recorrido por Nieveles" + arbolEst.recorridoPorNiveles());
-//        System.out.println("Recorrido por Nieveles" + arbolB.recorridoPorNivelesRe());
         System.out.println("Recorrido en PreOrden" + arbolEst.recorridoEnPreOrden());
         System.out.println("Recorrido en PreOrden RE" + arbolB.recorridoEnPreOrdenRe());
         System.out.println("Recorrido en InOrden" + arbolEst.recorridoEnInOrden());

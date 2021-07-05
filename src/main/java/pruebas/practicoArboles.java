@@ -5,6 +5,8 @@
  */
 package pruebas;
 
+import Arboles.AVL;
+import Arboles.ArbolB;
 import Arboles.ArbolBinarioBusqueda;
 import Arboles.ArbolMViasBusqueda;
 import Arboles.IArbolBusqueda;
@@ -35,12 +37,11 @@ public class practicoArboles {
         arbolBinario.insertar(15, 21);arbolBinario.insertar(35, 21);
         arbolBinario.insertar(55, 21);arbolBinario.insertar(87, 21);
         arbolBinario.insertar(48, 21);arbolBinario.insertar(63, 21);
-        System.out.println(arbolBinario.toString());
-        System.out.println(arbolBinario.sixe());
-        System.out.println("Cantidad hojas recu " + arbolBinario.cantidadHojasRec());
-        System.out.println("Recorrido por Nieveles" + arbolBinario.recorridoPorNiveles());
-        System.out.println("Recorrido en PreOrden" + arbolBinario.recorridoEnPreOrden());
-        System.out.println("Recorrido en InOrden" + arbolBinario.recorridoEnInOrden());
+
+        AVL<Integer,Integer> arbolAVL = new AVL<>();
+        arbolAVL.insertar(3, 1); arbolAVL.insertar(2, 1); arbolAVL.insertar(1, 1);
+        arbolAVL.insertar(4, 1); arbolAVL.insertar(5, 1);
+        
         ArbolMViasBusqueda<Integer,Integer > arbolMvias;
         arbolMvias = new ArbolMViasBusqueda<>(4);
         arbolMvias.insertar(80, 10);  arbolMvias.insertar(120, 10);  arbolMvias.insertar(200, 10);
@@ -52,20 +53,56 @@ public class practicoArboles {
         arbolMvias.insertar(160, 10);  arbolMvias.insertar(170, 10); arbolMvias.insertar(190, 10);
         arbolMvias.insertar(158, 10);
         arbolMvias.insertar(400, 10);  arbolMvias.insertar(500, 10); arbolMvias.insertar(560, 10);
-        System.out.println("\nRecorrido en Pre Orden " + arbolMvias.recorridoEnPreOrden());
-        System.out.println("Recorrido en In Orden " + arbolMvias.recorridoEnInOrden());
-        System.out.println("Recorrido en Post Orden " + arbolMvias.recorridoEnPostOrden());
-        System.out.println("Sixe " + arbolMvias.sixe());
-        System.out.println("Nivel " + arbolMvias.nivel());
+
+        ArbolB<Integer,Integer> arbolB = new ArbolB<>(4);
+        arbolB.insertar(300, 10); arbolB.insertar(500, 10); 
+        arbolB.insertar(100, 10);
+        arbolB.insertar(50, 10); arbolB.insertar(400, 10); arbolB.insertar(800, 10);
+        arbolB.insertar(90, 10); arbolB.insertar(91, 10); 
+        arbolB.insertar(75, 10); arbolB.insertar(99, 10); arbolB.insertar(70, 10);
+
         System.out.println("1. Implementar los métodos que no se implementaron en clases o que se implementaron a \n" +
 "medias de árboles m vias de búsqueda y arboles B");
+        // ARBOL BINARIO
+        System.out.println(" \nARBOL BINARIO ");
+        System.out.println("SIXE arbolBinario " + arbolBinario.sixe());
+        System.out.println("Cantidad hojas recursivo " + arbolBinario.cantidadHojasRec());
+        System.out.println("Recorrido por Nieveles" + arbolBinario.recorridoPorNiveles());
+        System.out.println("Recorrido en PreOrden" + arbolBinario.recorridoEnPreOrden());
+        System.out.println("Recorrido en PreOrden RE" + arbolBinario.recorridoEnPreOrdenRe());
+        System.out.println("Recorrido en InOrden" + arbolBinario.recorridoEnInOrden());
+        System.out.println("Recorrido en InOrden RE" + arbolBinario.recorridoEnInOrdenRe());
+        System.out.println("Recorrido en PostOrden" + arbolBinario.recorridoEnPostOrden());
+        System.out.println("Recorrido en PostOrden RE" + arbolBinario.recorridoEnPostOrdenRe());
+        //arbol AVL 
+        System.out.println(" \nARBOL AVL ");
+        System.out.println("Sixe AVL " + arbolAVL.sixe());
+  //      System.out.println("Nivel AVL " + arbolAVL.nivel());
+        System.out.println("Recorrido por Nieveles" + arbolAVL.recorridoPorNiveles());
+        System.out.println("Recorrido en Pre Orden " + arbolAVL.recorridoEnPreOrden());
+        System.out.println("Recorrido en In Orden " + arbolAVL.recorridoEnInOrden());
+        System.out.println("Recorrido en Post Orden " + arbolAVL.recorridoEnPostOrden());
+        // ARBOL MVIAS
+        System.out.println(" \nARBOL MVIAS ");
+        System.out.println("Sixe Arbol Mvias" + arbolMvias.sixe());
+        System.out.println("Nivel Arbol Mvias" + arbolMvias.nivel());
+        System.out.println("Recorrido en Pre Orden " + arbolMvias.recorridoEnPreOrden());
+        System.out.println("Recorrido en In Orden " + arbolMvias.recorridoEnInOrden());
+        System.out.println("Recorrido en Post Orden " + arbolMvias.recorridoEnPostOrden());
+        // ARBOL B
+        System.out.println(" \nARBOL B ");
+        System.out.println("sixe ArbolB " + arbolB.sixe());
+        System.out.println("Nivel ArbolB " + arbolB.nivel());
+        System.out.println("Recorrido en InOrden ArbolB " + arbolB.recorridoEnInOrden());
+        System.out.println("Recorrido por Niveles ArbolB " + arbolB.recorridoPorNiveles());
+        System.out.println("Recorrido en Post Orden ArbolB " + arbolB.recorridoEnPostOrden());
         
         System.out.println("\n2. Implemente un método recursivo que retorne el nivel en que se encuentra una clave que se \n" +
 "recibe como parámetro. Devolver -1 si la clave no está en el árbol");
-        System.out.println("Clvae 40 es nivel 0 = "  + arbolBinario.pregunta2(40));
-        System.out.println("Clvae 70 es nivel 1 = "  + arbolBinario.pregunta2(70));
-        System.out.println("Clvae 35 es nivel 2 = "  + arbolBinario.pregunta2(35));
-        System.out.println("Clvae 63 es nivel 3 = "  + arbolBinario.pregunta2(63));
+        System.out.println("Clave 40 es nivel 0 = "  + arbolBinario.pregunta2(40));
+        System.out.println("Clave 70 es nivel 1 = "  + arbolBinario.pregunta2(70));
+        System.out.println("Clave 35 es nivel 2 = "  + arbolBinario.pregunta2(35));
+        System.out.println("Clave 63 es nivel 3 = "  + arbolBinario.pregunta2(63));
         
         System.out.println("\n3. Implemente un método recursivo que retorne la cantidad de datos no vacíos que hay en el \n" +
 "nivel N de un árbol m-vias de búsqueda");
