@@ -507,7 +507,93 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
     }
     //6. Implemente un método que retorne verdadero si solo hay hojas en el último nivel de un " +
 //"árbol m-vias de búsqueda. Falso en caso contrario.
-//    public boolean pregunta6(){
-//        
-//    }
+    public boolean pregunta6(){
+            return pregunta6(this.raiz, 0);
+    }
+
+	private boolean pregunta6(NodoMVias<K, V> nodoActual, int nivelActual) {
+		if (NodoMVias.esNodoVacio(nodoActual)) {
+			return true;
+		}
+		if (nodoActual.esHoja() && nivelActual != nivel()) {
+			return false;
+		}
+		boolean b = true;
+		for (int i = 0; i < orden ; i ++) {
+			b = pregunta6(nodoActual.getHijo(i), nivelActual + 1);
+			if (!b) {
+				i = this.orden;
+			}
+			
+		}
+		return b;
+	}
+    //7. Implemente un método que retorne verdadero si un árbol m-vias esta balanceado según las \n" +
+//"reglas de un árbol B. Falso en caso contrario.
+    public boolean pregunta7() {
+        if (!this.pregunta6()) {
+            return false;
+        }
+        Queue<NodoMVias<K, V>> colaDeNodos = new LinkedList<>();
+        colaDeNodos.offer(this.raiz);
+        while (!colaDeNodos.isEmpty()) {
+            NodoMVias<K, V> nodoActual = colaDeNodos.poll();
+            for (int i = 0; i < nodoActual.cantidadDeClavesNoVacios(); i++) {
+                if (nodoActual.cantidadDeHijosNoVacias() < nodoActual.cantidadDeClavesNoVacios()
+                        && !nodoActual.esHoja()) {
+                    return false;
+                }
+                if (nodoActual.esHoja()) {
+                    if (nodoActual.cantidadDeClavesNoVacios() < ((orden - 1) / 2)) {
+                        return false;
+                    }
+                }
+                if (!nodoActual.esHijoVacio(i)) {
+                    colaDeNodos.offer(nodoActual.getHijo(i));
+                }
+
+            }
+
+            if (!nodoActual.esHijoVacio(orden - 1)) {
+                colaDeNodos.offer(nodoActual.getHijo(orden - 1));
+            }
+        }
+
+        return true;
+    }
+    //8. Implemente un método privado que reciba un dato como parámetro y que retorne cual sería\n" +
+//"el sucesor inorden de dicho dato, sin realizar el recorrido en inOrden
+    public K pregunta8(K claveABuscar){
+        if (this.buscar(claveABuscar) == null){
+            return (K)NodoMVias.datoVacio();
+        }
+        NodoMVias<K,V> nodoActual = this.raiz;
+        int posicionClave = this.obtenerPosicionClaveEnNodo(nodoActual, claveABuscar);
+        while ( posicionClave == this.POSICION_INVALIDA){
+            int porDondeBajar = this.obtenerPosicionPorDondeBajar(nodoActual, claveABuscar);
+            nodoActual = nodoActual.getHijo(porDondeBajar);
+            posicionClave = this.obtenerPosicionClaveEnNodo(nodoActual, claveABuscar);
+        }
+        if (posicionClave < nodoActual.cantidadDeClavesNoVacios()-1){
+            if (nodoActual.esHijoVacio(posicionClave + 1)) {
+                return nodoActual.getClave(posicionClave + 1);
+            } else {
+                nodoActual = nodoActual.getHijo(posicionClave);
+                while (!nodoActual.esHijoVacio(0)) {
+                    nodoActual = nodoActual.getHijo(0);
+                }
+                return nodoActual.getClave(0);
+            }
+        } else {
+            if (nodoActual.esHijoVacio(posicionClave + 1)) {
+                return (K) NodoMVias.datoVacio();
+            }else {
+                nodoActual = nodoActual.getHijo(posicionClave+1);
+                while (!nodoActual.esHijoVacio(0)) {
+                    nodoActual = nodoActual.getHijo(0);
+                }
+                return nodoActual.getClave(0);
+            }
+        }
+    }
 }

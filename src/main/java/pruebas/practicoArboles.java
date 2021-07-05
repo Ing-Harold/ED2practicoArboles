@@ -58,8 +58,8 @@ public class practicoArboles {
         arbolB.insertar(300, 10); arbolB.insertar(500, 10); 
         arbolB.insertar(100, 10);
         arbolB.insertar(50, 10); arbolB.insertar(400, 10); arbolB.insertar(800, 10);
-        arbolB.insertar(90, 10); arbolB.insertar(91, 10); 
-        arbolB.insertar(75, 10); arbolB.insertar(99, 10); arbolB.insertar(70, 10);
+        arbolB.insertar(90, 10); arbolB.insertar(91, 10); arbolB.insertar(70, 10);
+        arbolB.insertar(75, 10); arbolB.insertar(99, 10); 
 
         System.out.println("1. Implementar los métodos que no se implementaron en clases o que se implementaron a \n" +
 "medias de árboles m vias de búsqueda y arboles B");
@@ -67,7 +67,7 @@ public class practicoArboles {
         System.out.println(" \nARBOL BINARIO ");
         System.out.println("SIXE arbolBinario " + arbolBinario.sixe());
         System.out.println("Cantidad hojas recursivo " + arbolBinario.cantidadHojasRec());
-        System.out.println("Recorrido por Nieveles" + arbolBinario.recorridoPorNiveles());
+        System.out.println("Recorrido por Niveles" + arbolBinario.recorridoPorNiveles());
         System.out.println("Recorrido en PreOrden" + arbolBinario.recorridoEnPreOrden());
         System.out.println("Recorrido en PreOrden RE" + arbolBinario.recorridoEnPreOrdenRe());
         System.out.println("Recorrido en InOrden" + arbolBinario.recorridoEnInOrden());
@@ -78,7 +78,7 @@ public class practicoArboles {
         System.out.println(" \nARBOL AVL ");
         System.out.println("Sixe AVL " + arbolAVL.sixe());
   //      System.out.println("Nivel AVL " + arbolAVL.nivel());
-        System.out.println("Recorrido por Nieveles" + arbolAVL.recorridoPorNiveles());
+        System.out.println("Recorrido por Niveles" + arbolAVL.recorridoPorNiveles());
         System.out.println("Recorrido en Pre Orden " + arbolAVL.recorridoEnPreOrden());
         System.out.println("Recorrido en In Orden " + arbolAVL.recorridoEnInOrden());
         System.out.println("Recorrido en Post Orden " + arbolAVL.recorridoEnPostOrden());
@@ -86,6 +86,7 @@ public class practicoArboles {
         System.out.println(" \nARBOL MVIAS ");
         System.out.println("Sixe Arbol Mvias" + arbolMvias.sixe());
         System.out.println("Nivel Arbol Mvias" + arbolMvias.nivel());
+        System.out.println("Recorrido por Niveles" + arbolMvias.recorridoPorNiveles());
         System.out.println("Recorrido en Pre Orden " + arbolMvias.recorridoEnPreOrden());
         System.out.println("Recorrido en In Orden " + arbolMvias.recorridoEnInOrden());
         System.out.println("Recorrido en Post Orden " + arbolMvias.recorridoEnPostOrden());
@@ -93,6 +94,7 @@ public class practicoArboles {
         System.out.println(" \nARBOL B ");
         System.out.println("sixe ArbolB " + arbolB.sixe());
         System.out.println("Nivel ArbolB " + arbolB.nivel());
+        System.out.println("Recorrido por Niveles" + arbolB.recorridoPorNiveles());
         System.out.println("Recorrido en InOrden ArbolB " + arbolB.recorridoEnInOrden());
         System.out.println("Recorrido por Niveles ArbolB " + arbolB.recorridoPorNiveles());
         System.out.println("Recorrido en Post Orden ArbolB " + arbolB.recorridoEnPostOrden());
@@ -118,18 +120,28 @@ public class practicoArboles {
         
         System.out.println("\n5. Implemente un método iterativo que retorne la cantidad de datos vacios y no vacíos en un \n" +
 "árbol b, pero solo antes del nivel N");
+        System.out.println("Antes de nivel 1 -> 2 vacios =  " + arbolB.pregunta5datosVacios(1));
+        System.out.println("Antes de nivel 2 -> 5 vacios =  " + arbolB.pregunta5datosVacios(2));
+        System.out.println("Antes de nivel 3 -> 13 vacios =  " + arbolB.pregunta5datosVacios(3));
+        System.out.println("Antes de nivel 1 -> 1 claves =  " + arbolB.pregunta5datosNoVacios(1));
+        System.out.println("Antes de nivel 2 -> 4 vacios =  " + arbolB.pregunta5datosNoVacios(2));
+        System.out.println("Antes de nivel 3 -> 11 vacios =  " + arbolB.pregunta5datosNoVacios(3));
         
         System.out.println("\n6. Implemente un método que retorne verdadero si solo hay hojas en el último nivel de un \n" +
 "árbol m-vias de búsqueda. Falso en caso contrario.");
+        System.out.println("arbol =  " + arbolMvias.pregunta6());  
         
         System.out.println("\n7. Implemente un método que retorne verdadero si un árbol m-vias esta balanceado según las \n" +
 "reglas de un árbol B. Falso en caso contrario.");
-        
+        System.out.println("Falso no esta balanceado ->  =  " + arbolMvias.pregunta7());
         System.out.println("\n8. Implemente un método privado que reciba un dato como parámetro y que retorne cual sería\n" +
 "el sucesor inorden de dicho dato, sin realizar el recorrido en inOrden.");
-        
+        System.out.println("Sucesor de 150 -> 158 =  " + arbolMvias.pregunta8(150));
+        System.out.println("Sucesor de 500 -> 560 =  " + arbolMvias.pregunta8(500));
+        System.out.println("Sucesor de 560 -> null =  " + arbolMvias.pregunta8(560));
         System.out.println("\n9. Para un árbol b implemente un método que retorne verdadero si todos sus nodos no hojas \n" +
 "no tienen datos vacíos, falso en caso contrario");
+        System.out.println("Falso =  " + arbolB.pregunta9());
     }
     
 }

@@ -175,4 +175,77 @@ public class ArbolB <K extends Comparable<K>,V> extends ArbolMViasBusqueda<K, V>
     protected NodoMVias<K,V> buscarNodoDeClavePredecesora(Stack<NodoMVias<K,V>> pila,K clave){
         return null;
     }
+    //5. Implemente un método iterativo que retorne la cantidad de datos vacios y no vacíos en un \n" +
+//"árbol b, pero solo antes del nivel N
+    public int pregunta5datosVacios(int n){
+        return pregunta5datosVacios(this.raiz,n);
+    }
+    private int pregunta5datosVacios(NodoMVias<K,V> nodoActual, int n){
+        if(NodoMVias.esNodoVacio(nodoActual)){
+            return 0;
+        }
+        int cantidad = 0;
+        if (n > 0){
+            cantidad = nodoActual.cantidadDeClavesVacios()-1;
+        }
+        for (int i = 0; i < nodoActual.cantidadDeClavesNoVacios(); i++){
+            cantidad += this.pregunta5datosVacios(nodoActual.getHijo(i),n - 1);
+        }
+        cantidad += this.pregunta5datosVacios(nodoActual.getHijo(nodoActual.cantidadDeClavesNoVacios()),n-1);
+        return cantidad;
+    }
+    public int pregunta5datosNoVacios(int n){
+        return pregunta5datosNoVacios(this.raiz,n);
+    }
+    private int pregunta5datosNoVacios(NodoMVias<K,V> nodoActual, int n){
+        if(NodoMVias.esNodoVacio(nodoActual)){
+            return 0;
+        }
+        int cantidad = 0;
+        if (n > 0){
+            cantidad = nodoActual.cantidadDeClavesNoVacios();
+        }
+        for (int i = 0; i < nodoActual.cantidadDeClavesNoVacios(); i++){
+            cantidad += this.pregunta5datosNoVacios(nodoActual.getHijo(i),n - 1);
+        }
+        cantidad += this.pregunta5datosNoVacios(nodoActual.getHijo(nodoActual.cantidadDeClavesNoVacios()),n-1);
+        return cantidad;
+    }
+    //9. Para un árbol b implemente un método que retorne verdadero si todos sus nodos no hojas \n" +
+//"no tienen datos vacíos, falso en caso contrario
+    public boolean pregunta9(){
+        return pregunta9(this.raiz);
+    }
+    private boolean pregunta9(NodoMVias<K,V> nodoActual){
+        if (NodoMVias.esNodoVacio(nodoActual)){
+            return false;
+        }
+        boolean b = false;
+        if (!nodoActual.esHoja()){
+            if (nodoActual.cantidadDeClavesNoVacios() == this.nroMaximoDeDatos){
+                return true;
+            }
+        }
+        for(int i = 0; i < this.orden; i++){
+            b = this.pregunta9(nodoActual.getHijo(i));
+        }
+        return b ;
+    }
+        private boolean vaciosAntesDeNivel  (NodoBinario<K,V> nodoActual, int nivelObjetivo, int nivelActual){
+        if (NodoBinario.esNodoVacio(nodoActual)){
+            return false;
+        }
+        if (nivelActual >= nivelObjetivo){
+            return false;
+        }
+        if (nodoActual.esVacioHijoIzquierdo() || nodoActual.esVacioHijoDerecho()){
+            return true;
+        }
+        boolean hayVaciosPorIzquierda = vaciosAntesDeNivel(nodoActual.getHijoIzquierdo(), 
+                nivelObjetivo, nivelActual + 1);
+        boolean hayVaciosPorDerecha = vaciosAntesDeNivel(nodoActual.getHijoDerecho(), 
+                nivelObjetivo, nivelActual + 1);
+        return hayVaciosPorDerecha || hayVaciosPorIzquierda;
+    }
+    
 }
