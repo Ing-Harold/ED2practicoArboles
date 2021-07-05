@@ -231,21 +231,5 @@ public class ArbolB <K extends Comparable<K>,V> extends ArbolMViasBusqueda<K, V>
         }
         return b ;
     }
-        private boolean vaciosAntesDeNivel  (NodoBinario<K,V> nodoActual, int nivelObjetivo, int nivelActual){
-        if (NodoBinario.esNodoVacio(nodoActual)){
-            return false;
-        }
-        if (nivelActual >= nivelObjetivo){
-            return false;
-        }
-        if (nodoActual.esVacioHijoIzquierdo() || nodoActual.esVacioHijoDerecho()){
-            return true;
-        }
-        boolean hayVaciosPorIzquierda = vaciosAntesDeNivel(nodoActual.getHijoIzquierdo(), 
-                nivelObjetivo, nivelActual + 1);
-        boolean hayVaciosPorDerecha = vaciosAntesDeNivel(nodoActual.getHijoDerecho(), 
-                nivelObjetivo, nivelActual + 1);
-        return hayVaciosPorDerecha || hayVaciosPorIzquierda;
-    }
     
 }
